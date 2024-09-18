@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -23,7 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u+=#lccs_yoyq%!g2ex$9u_+uq_vuf1i)$(b%g+gl5&wy+e4%9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+PRODUCTION = os.getenv("PRODUCTION", False)
+DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "raden-ahmad33-mentalhealthtracker.pbp.cs.ui.ac.id", "https://raden.ahmad33:22nZNZvW7MfGzBrRZud1W-N3IV--fEKB@pbp.cs.ui.ac.id/raden.ahmad33/mentalhealthtracker"]
 
