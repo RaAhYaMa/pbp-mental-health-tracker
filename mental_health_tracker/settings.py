@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-u+=#lccs_yoyq%!g2ex$9u_+uq_vuf1i)$(b%g+gl5&wy+e4%9
 PRODUCTION = os.getenv("PRODUCTION", False)
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "raden-ahmad33-mentalhealthtracker.pbp.cs.ui.ac.id", "https://raden.ahmad33:22nZNZvW7MfGzBrRZud1W-N3IV--fEKB@pbp.cs.ui.ac.id/raden.ahmad33/mentalhealthtracker"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "raden-ahmad33-mentalhealthtracker.pbp.cs.ui.ac.id", "https://raden.ahmad33:22nZNZvW7MfGzBrRZud1W-N3IV--fEKB@pbp.cs.ui.ac.id/raden.ahmad33/mentalhealthtracker", "10.0.2.2",]
 
 
 # Application definition
@@ -39,8 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'authentication',
+    'corsheaders',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'mental_health_tracker.urls'
